@@ -12,6 +12,8 @@
   - 특정 genome만이 갖고있고, 다른 genome들은 갖지 않는 특이한 sequence를 찾을 수 있음
   - K=22, 최소 length 배율 x4 옵션으로 실행 시 15 genome중 어느 genome에서도 특이한 서열이 존재하지 않음
   - K=13, filter 0.6(default 0.5) 으로 조정시 9개의 genome에서 특이한 서열이 발견됨
+  - 이 중 KJM407, ME3, SRP423 3개의 genome에서 유의미한 수의 contig들이 발견됨
+  - 이 세 genome을 target으로 하여 mapping
 
 |Strain|Number of sequence|average length|average score|max length|min length|score>0.7|
 |---|-----|-----|-----|-----|-----|-----|
@@ -31,6 +33,29 @@
 |E432I|0|0.0|0.0|0|0|0|
 |SRP423|77|68.85|0.97|154|52|76|
 
-### 1-2. Mapping
+2) bowtie2 mapping
 
-### 1-3. 검증
+- bowtie2 프로그램을 이용하여, Neptune output contig들을 원래 assembly genome상에 mapping
+- output sam file을 살펴본 결과 대부분의 contig이 assembly genome의 여러 NODE 상에 고르게 퍼져 나타남
+- contig가 두개 이상 mapping되었고, 길이가 5000 이상인 NODE들을 확인
+- KJM407에서는 length 7361에 20 contig가 mapping된 NODE 50과 length 6308에 7 contig가 mapping된 NODE 54가 존재
+- SRP423에서는 length 12887에 16 contig가 mapping된 NODE 39가 존재
+
+### 1-2. 검증
+
+1) contig 자르기
+- SRP423의 NODE 39에서, 8976bp부터 12887bp 사이에 약 500~1000bp 간격으로 50~110 길이의 contig가 하나씩 존재
+  - 따라서 contig들이 몰려 있는 8900bp부터 12887bp 사이 구간을 잘라냄
+- KJM407의 NODE 50에서, 300bp부터 5800bp 사이 구간에 10개의 contig가 존재
+  - 따라서 contig들이 몰려 있는 200bp부터 5900bp 사이 구간을 잘라냄
+- KJM407의 NODE 54에서, 5400bp부터 6000bp 사이 구간에 3개의 contig가 존재
+  - 따라서 5300bp부터 6100bp 사이 구간을 잘라냄
+
+2) contig mapping
+- 잘라낸 genome들을 bowtie2에서, 다른 14개의 genome들에 mapping 시도
+  - 3개의 잘라낸 genome들 모두 어떤 genome에도 mapping되지 않음
+- 잘라내지 않은 NODE39, NODE50, NODE54를 다른 14개의 genome에 다시 mapping 시도
+  - 3개의 NODE 모두 어떤 genome에도 mapping되지 않음
+
+### 1-3. 검증2 - blastn 사용
+* 주말 이후 진행 예정
