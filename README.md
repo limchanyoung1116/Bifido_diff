@@ -52,7 +52,7 @@
   - 따라서 contig들이 몰려 있는 200bp부터 5900bp 사이 구간을 잘라냄
 - KJM407의 NODE 54에서, 5400bp부터 6000bp 사이 구간에 3개의 contig가 존재
   - 따라서 5300bp부터 6100bp 사이 구간을 잘라냄
-- [KJM407-NODE50, SRP423-NODE39 sequence file](
+- [KJM407-NODE50, SRP423-NODE39 sequence file](https://github.com/limchanyoung1116/Bifido_diff/tree/main/genomefiles)
 
 2) contig mapping
 - 잘라낸 genome들을 bowtie2에서, 다른 14개의 genome들에 mapping 시도
@@ -61,4 +61,7 @@
   - 3개의 NODE 모두 어떤 genome에도 mapping되지 않음
 
 ### 1-3. 검증2 - blastn 사용
-* 주말 이후 진행 예정
+
+- 15개의 genome들 중 target인 SRP423과 KJM407을 제외한 13개의 genome으로 blast database 제작
+  - SRP423_NODE39와 KJM407_NODE50, NODE54에 대해서 blastn query 진행
+  - 일치하는 서열이 존재하지 않았음
