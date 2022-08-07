@@ -1,6 +1,6 @@
 ## 1. _Bifidobacterium fermentum_ strain 사이의 유전적 차이 찾기
 
-- Ilumina sequencing machine 으로 sequencing된 15개의 _Bifidobacterium fermentum_ genome들을 비교하기
+- Sequencing 후 assembly된 15개의 _Bifidobacterium fermentum_ genome들을 비교하기
 - 각 genome만이 갖고 있는, 다른 genome들에는 없는 locus를 찾기
 - 해당 locus에 존재하는 gene들을 찾기
 
@@ -8,8 +8,10 @@
 
 1) Neptune program을 이용해 특징적인 영역 찾기
 
+- [Neptune github](https://github.com/phac-nml/neptune)
+  - Neptune은 genome들을 ingroup, outgroup들로 나누어 특정 group에서는 공유되고, 다른 특정 group에서는 존재하지 않는 genome상의 locus를 찾는 프로그램임
+  - Neptune은 k-mer를 기반으로 작동하며 k 길이는 조절가능함
 - 15개의 genome에 대해 각각 Neptune ingroup 1 genome, outgroup 14 genome을 수행하기
-  - 특정 genome만이 갖고있고, 다른 genome들은 갖지 않는 특이한 sequence를 찾을 수 있음
   - K=22, 최소 length 배율 x4 옵션으로 실행 시 15 genome중 어느 genome에서도 특이한 서열이 존재하지 않음
   - K=13, filter 0.6(default 0.5) 으로 조정시 9개의 genome에서 특이한 서열이 발견됨
   - 이 중 KJM407, ME3, SRP423 3개의 genome에서 유의미한 수의 contig들이 발견됨
@@ -50,6 +52,7 @@
   - 따라서 contig들이 몰려 있는 200bp부터 5900bp 사이 구간을 잘라냄
 - KJM407의 NODE 54에서, 5400bp부터 6000bp 사이 구간에 3개의 contig가 존재
   - 따라서 5300bp부터 6100bp 사이 구간을 잘라냄
+- [KJM407-NODE50, SRP423-NODE39 sequence file](
 
 2) contig mapping
 - 잘라낸 genome들을 bowtie2에서, 다른 14개의 genome들에 mapping 시도
