@@ -39,7 +39,7 @@
 
 - bowtie2 프로그램을 이용하여, Neptune output contig들을 원래 assembly genome상에 mapping
 - output sam file을 살펴본 결과 대부분의 contig이 assembly genome의 여러 NODE 상에 고르게 퍼져 나타남
-- contig가 두개 이상 mapping되었고, 길이가 5000 이상인 NODE들을 확인
+- contig가 두개 이상 mapping된 NODE들 중 길이가 5000 이상인 NODE들을 확인
 - KJM407에서는 length 7361에 20 contig가 mapping된 NODE 50과 length 6308에 7 contig가 mapping된 NODE 54가 존재
 - SRP423에서는 length 12887에 16 contig가 mapping된 NODE 39가 존재
 
@@ -63,5 +63,5 @@
 ### 1-3. 검증2 - blastn 사용
 
 - 15개의 genome들 중 target인 SRP423과 KJM407을 제외한 13개의 genome으로 blast database 제작
-  - SRP423_NODE39와 KJM407_NODE50, NODE54에 대해서 blastn query 진행
+  - SRP423_NODE39와 KJM407_NODE50, NODE54의 잘라낸 genome에 대해서 blastn query 진행
   - 일치하는 서열이 존재하지 않았음
