@@ -65,3 +65,4 @@
 - 15개의 genome들 중 target인 SRP423과 KJM407을 제외한 13개의 genome으로 blast database 제작
   - SRP423_NODE39와 KJM407_NODE50, NODE54의 잘라낸 genome에 대해서 blastn query 진행
   - 일치하는 서열이 존재하지 않았음
+  - [blastn output file](https://github.com/limchanyoung1116/Bifido_diff/tree/main/blastoutput)
